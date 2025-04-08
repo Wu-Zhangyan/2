@@ -167,32 +167,8 @@ def get_commodity_info():
 for page in range(1,61):
   # 等待元素加载 (Нагрузка элемента ожидания)
   driver.implicitly_wait(5)
-
-  '''
-    # 检查是否存在弹窗按钮
-    popup_btn = None
-    try:
-      popup_btn = driver.find_element(By.CLASS_NAME, 'popup__btn-main')
-      popup_btn.click()
-      driver.implicitly_wait(2)
-    except:
-      pass
-  '''
-
   find_lis()
   time.sleep(1)
-  '''
-  find_price()
-  if find_price():
-    get_commodity_info()
-    driver.implicitly_wait(10)
-    #点击下一页 (Нажмите на следующую страницу)
-    #driver.find_element(By.CSS_SELECTOR, '.pagination-next').click()
-    next_page_button = driver.find_element(By.CSS_SELECTOR, '.pagination-next')
-    driver.execute_script("arguments[0].click();", next_page_button)
-  else:
-    find_price()
-  '''
   get_commodity_info()
   driver.implicitly_wait(10)
   # 点击下一页 (Нажмите на следующую страницу)
@@ -202,18 +178,8 @@ for page in range(1,61):
 
 # 关闭浏览器 (Закрыть браузер)
 driver.quit()
-'''
-# 将商品数据保存到CSV文件中 (Сохранить данные продукта в файле CSV)
-csv_file_path = 'wildberries冬季外套数据.csv'
-csv_columns = ['title', 'brand', 'price', 'count', 'rating', 'info_dict']
 
-with open(csv_file_path, 'w', encoding='utf-8', newline='') as csv_file:
-    writer = csv.DictWriter(csv_file, fieldnames=csv_columns)
-    writer.writeheader()
-    for data in commodity_data:
-        writer.writerow(data)
-'''
-print(f"数据已保存到'wildberries冬季外套数据'文件中")
+print(f"数据已保存到'wildberries宠物用品数据'文件中")
 
 
 
