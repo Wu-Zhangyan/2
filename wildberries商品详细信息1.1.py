@@ -34,7 +34,7 @@ def drop_down():
 
 def find_lis():
   drop_down()
-  # 最大尝试次数
+  # 最大尝试次数 (Максимальное количество попыток)
   max_attempts = 15000
   attempts = 0
   while attempts < max_attempts:
@@ -46,24 +46,24 @@ def find_lis():
       if len(list_a) <= 120:
         time.sleep(30)
         print("检测到目标元素，但不符合要求")
-        # 刷新页面
+        # 刷新页面（Обновить страницу）
         driver.refresh()
         print("页面已刷新")
         return find_lis()
       else:
-        # 找到目标元素后返回
+        # 找到目标元素后返回（Возврат после нахождения целевого элемента）
         print("目标元素符合要求")
         return list_a
     except NoSuchElementException:
       print("未检测到目标元素，正在尝试重新检索...")
-      # 可以根据需要调整等待时间
+      # 可以根据需要调整等待时间（Время ожидания можно отрегулировать по мере необходимости）
       time.sleep(30)
-      # 刷新页面
+      # 刷新页面（Обновить страницу）
       driver.refresh()
       #attempts += 1
       return find_lis()
   print("达到最大尝试次数，未能找到价格元素")
-  # 返回是否找到了价格元素的状态
+  # 返回是否找到了价格元素的状态（Возвращает, найден ли элемент цены）
   return None
 
 
@@ -178,7 +178,7 @@ for page in range(1,61):
 
 # 关闭浏览器 (Закрыть браузер)
 driver.quit()
-
+# print(f"Данные сохранены в файле «Данные о товарах для животных Wildberries»")
 print(f"数据已保存到'wildberries宠物用品数据'文件中")
 
 
